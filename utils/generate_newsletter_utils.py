@@ -23,7 +23,7 @@ def generate_newsletter(summries, query):
         
         Make sure to write it informally - no "Dear" or any other formalities.  Start the newsletter with
         `Hi All!
-          Here is your weekly dose of the Tech  [CHANGE THIS ACCORDING TO {query}]  Newsletter, a list of what I find interesting
+          Here is your weekly dose of the [CHANGE THIS ACCORDING TO {query}]  Newsletter, a list of what I find interesting
           and worth and exploring.`
           
         Make sure to also write a backstory about the topic - make it personal, engaging and lighthearted before

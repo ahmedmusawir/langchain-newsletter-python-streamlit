@@ -20,7 +20,7 @@ def pick_best_articles_urls(response_dict, query):
     response_str = json.dumps(response_dict)
 
     # Initialize LLM
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.7)
+    llm = ChatOpenAI(model_name='gpt-4o', temperature=0.7)
 
     # Define the prompt template
     template = """ 

@@ -1,25 +1,5 @@
 import os
-import json
-import openai
-import requests
-import logging
 from dotenv import find_dotenv, load_dotenv
-from langchain_openai import OpenAI
-from langchain_community.tools import DuckDuckGoSearchRun
-from langchain.chains import LLMChain
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain.memory import ConversationBufferMemory
-from langchain_core.runnables import Runnable
-from langchain_community.document_loaders import UnstructuredURLLoader
-from langchain.text_splitter import CharacterTextSplitter
-from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
-# ---------------------------------------------------------------------------
-# KEEP THESE IMPORTS FOR REFERENCE. SICK OF FREQUENT CHANGES
-# ---------------------------------------------------------------------------
 import streamlit as st
 
 # Load environment variables from .env file
@@ -39,6 +19,7 @@ def main():
                        page_icon=":parrot:", layout="centered")
     
     st.header("Generate a Newsletter :parrot:")
+    st.subheader('(Python, Streamlit, Langchain, Openai/GPT 4o, Duckduckgo Search, FAISS vector DB )')
     search_query = st.text_input("Enter a topic...")
 
     if search_query:
@@ -49,14 +30,14 @@ def main():
             search_results = search_duckduckgo_with_details(search_query)
             print("Search Results:")
             st.markdown("### Displaying Search Results...")
-            st.write(search_results, language='python')
+            st.write(search_results)
 
         # Step 2: Collect best articles
         with st.spinner("Collecting best articles..."):
             best_urls = pick_best_articles_urls(search_results, search_query)
             print("Best URLs:")
             st.markdown("### Best URLs:")
-            st.write(best_urls, language='python')
+            st.write(best_urls)
 
         # Step 3: Extract content and create FAISS vector DB
         with st.spinner("Extracting content from URLs and creating FAISS vector DB..."):
